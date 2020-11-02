@@ -45,7 +45,7 @@ function addResult (apiData){
     for (let key in apiData){
         if (key===selNode.value){
           let linkk =`<p><a href="https://quickchart.io/chart?c={type:'bar',data:{labels:['Кв.1','Кв.2','Кв.3','Кв.4'],datasets:[{label:'Выручка за ${key} год',data:[${apiData[key].q1},${apiData[key].q2},${apiData[key].q3},${apiData[key].q4}]}]}}">Открыть график</a></p>`
-            let resultt = `<table border="1">
+          let resultt = `<table border="1">
 <tr>
     <th>1кВ</th>
     <th>2кВ</th>
