@@ -7,6 +7,7 @@ btnNode.addEventListener('click', () => {
     useRequest('https://raw.githubusercontent.com/MaksimZ91/module14_homework/master/revenue.json', addResult) :  
     alert("Год не выбран.");
   })
+  
  selNode.addEventListener('change', () => {
   selNode.value!=0?
   alerNode.setAttribute('hidden','true'):
