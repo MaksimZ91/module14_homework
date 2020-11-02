@@ -4,7 +4,7 @@ const selNode = document.querySelector('.select');
 const alerNode = document.querySelector('.year');
 btnNode.addEventListener('click', () => {
   selNode.value !=0 ? 
-    useRequest('https://raw.githubusercontent.com/boogi92/deb/master/revenue.json', addResult) :  
+    useRequest('https://raw.githubusercontent.com/MaksimZ91/module14_homework/master/revenue.json', addResult) :  
     alert("Год не выбран.");
   })
  selNode.addEventListener('change', () => {selNode.value!=0?alerNode.setAttribute('hidden','true'):alerNode.removeAttribute('hidden')}) 
