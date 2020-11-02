@@ -2,17 +2,20 @@ const resultNode = document.querySelector('.result');
 const btnNode = document.querySelector('.btn');
 const selNode = document.querySelector('.select');
 const alerNode = document.querySelector('.year');
+const linkNode = document.querySelector('.link');
 btnNode.addEventListener('click', () => {
   selNode.value !=0 ? 
     useRequest('https://raw.githubusercontent.com/MaksimZ91/module14_homework/master/revenue.json', addResult) :  
     alert("Год не выбран.");
   })
   
+  
  selNode.addEventListener('change', () => {
   selNode.value!=0?
   alerNode.setAttribute('hidden','true'):
   alerNode.removeAttribute('hidden')
 }) 
+
 
 function useRequest(url, callback) {
     var xhr = new XMLHttpRequest();
@@ -36,11 +39,12 @@ function useRequest(url, callback) {
   xhr.send();
 };
 
-
 function addResult (apiData){
     let result=""
+    let link=""
     for (let key in apiData){
         if (key===selNode.value){
+          let linkk =`<p><a href="https://quickchart.io/chart?c={type:'bar',data:{labels:['Кв.1','Кв.2','Кв.3','Кв.4'],datasets:[{label:'Выручка за ${key} год',data:[${apiData[key].q1},${apiData[key].q2},${apiData[key].q3},${apiData[key].q4}]}]}}">Открыть график</a></p>`
             let resultt = `<table border="1">
 <tr>
     <th>1кВ</th>
@@ -57,10 +61,12 @@ function addResult (apiData){
 </table>`;
 
             result = result + resultt
+            link=link+linkk
         }
 
     }
     resultNode.innerHTML = result;
+    linkNode.innerHTML=link;
 }
 
 
