@@ -3,13 +3,15 @@ const btnNode = document.querySelector('.btn');
 const selNode = document.querySelector('.select');
 const alerNode = document.querySelector('.year');
 const linkNode = document.querySelector('.link');
+const tableNode= document.querySelector('.table')
+const tableRow = tableNode.querySelector('.row')
 btnNode.addEventListener('click', () => {
   selNode.value !=0 ? 
     useRequest('https://raw.githubusercontent.com/MaksimZ91/module14_homework/master/revenue.json', addResult) :  
     alert("Год не выбран.");
   })
   
-  
+ 
  selNode.addEventListener('change', () => {
   selNode.value!=0?
   alerNode.setAttribute('hidden','true'):
@@ -40,34 +42,27 @@ function useRequest(url, callback) {
 };
 
 function addResult (apiData){
-    let result=""
-    let link=""
+  tableNode.removeAttribute('hidden')
+  let row=""
+  let link=""
     for (let key in apiData){
-        if (key===selNode.value){
-          let linkk =`<p><a href="https://quickchart.io/chart?c={type:'bar',data:{labels:['Кв.1','Кв.2','Кв.3','Кв.4'],datasets:[{label:'Выручка за ${key} год',data:[${apiData[key].q1},${apiData[key].q2},${apiData[key].q3},${apiData[key].q4}]}]}}">Открыть график</a></p>`
-          let resultt = `<table border="1">
-<tr>
-    <th>1кВ</th>
-    <th>2кВ</th>
-    <th>3кВ</th>
-    <th>4кВ</th>
-</tr>
-    <tr>
-        <th>${apiData[key].q1}</th>
-        <th>${apiData[key].q2}</th>
-        <th>${apiData[key].q3}</th>
-        <th>${apiData[key].q4}</th>
-    </tr>
-</table>`;
-
-            result = result + resultt
-            link=link+linkk
-        }
-
+      if (key===selNode.value){
+        let linkk =`<p><a href="https://quickchart.io/chart?c={type:'bar',data:{labels:['Кв.1','Кв.2','Кв.3','Кв.4'],datasets:[{label:'Выручка за ${key} год',data:[${apiData[key].q1},${apiData[key].q2},${apiData[key].q3},${apiData[key].q4}]}]}}">Открыть график</a></p>`
+        let rows=`<th>${apiData[key].q1}</th>
+                  <th>${apiData[key].q2}</th>
+                  <th>${apiData[key].q3}</th>
+                  <th>${apiData[key].q4}</th>`
+    row=row+rows    
+    link=link+linkk          
     }
-    resultNode.innerHTML = result;
-    linkNode.innerHTML=link;
+  }
+  tableRow.innerHTML=row
+  linkNode.innerHTML=link;
 }
 
+                       
 
 
+           
+
+     
