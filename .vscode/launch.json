@@ -4,11 +4,12 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
+    
     {
       "type": "pwa-chrome",
       "request": "launch",
-      "name": "Open 14-5.html",
-      "file": "c:\\Users\\buldo\\Desktop\\module14_homework\\14-5.html"
+      "name": "Open 14-3.4..html",
+      "file": "c:\\Users\\buldo\\Desktop\\module14_homework\\14-3.4.html"
     }
   ]
 }
