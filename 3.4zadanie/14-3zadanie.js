@@ -7,7 +7,7 @@ const tableNode= document.querySelector('.table')
 const tableRow = tableNode.querySelector('.row')
 btnNode.addEventListener('click', () => {
   selNode.value !=0 ? 
-    useRequest('https://raw.githubusercontent.com/MaksimZ91/module14_homework/master/revenue.json', addResult) :  
+    useRequest('https://raw.githubusercontent.com/MaksimZ91/module14_homework/master/3.4zadanie/revenue.json', addResult) :  
     alert("Год не выбран.");
   })
   
