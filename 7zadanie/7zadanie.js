@@ -12,7 +12,7 @@ function useRequest (){
   .catch(() => {console.log("error")});
  }
 
- function  addNode (data){setTimeout(()=>{
+ function  addNode (data){
    if (data.length==0){
      errNode.innerHTML=`<div>«Пользователь с указанным id не найден»</div>`
      errNode.removeAttribute("hidden")
@@ -23,10 +23,10 @@ function useRequest (){
         listNode.insertAdjacentHTML("afterbegin",`<li>${data[key].title}</li>`):
         listNode.insertAdjacentHTML("afterbegin",`<li><strike>${data[key].title}</strike></li>`)
       }
-    }},100)
+    }
   }
   
-function  clearTable (){
+async function  clearTable (){
   let list=document.querySelectorAll('li')
   if (list.length==0){
     return
@@ -36,3 +36,4 @@ function  clearTable (){
     })
   }
 }
+
