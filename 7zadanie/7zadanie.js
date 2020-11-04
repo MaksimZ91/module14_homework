@@ -26,7 +26,7 @@ function useRequest (){
     }
   }
   
-async function  clearTable (){
+function  clearTable (){
   let list=document.querySelectorAll('li')
   if (list.length==0){
     return
