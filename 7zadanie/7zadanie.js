@@ -3,6 +3,7 @@ let inputNode=document.querySelector('.input')
 let btnNode=document.querySelector('.btn')
 let errNode=document.querySelector('.error')
 btnNode.addEventListener('click',useRequest)
+btnNode.addEventListener('click', clearTable)
 
 function useRequest (){
   fetch(`https://jsonplaceholder.typicode.com/users/${+inputNode.value}/todos`)
@@ -11,12 +12,11 @@ function useRequest (){
   .catch(() => {console.log("error")});
  }
 
- function addNode (data){
+ function  addNode (data){
    if (data.length==0){
      errNode.innerHTML=`<div>«Пользователь с указанным id не найден»</div>`
      errNode.removeAttribute("hidden")
    }else{
-  console.log("2")
         for (let key in data){
         errNode.setAttribute('hidden', 'true')
         data[key].completed==true?
@@ -26,4 +26,13 @@ function useRequest (){
     }
   }
   
-
+function  clearTable (){
+  let list=document.querySelectorAll('li')
+  if (list.length==0){
+    return
+  }else{
+    list.forEach((element,index)=>{
+      listNode.removeChild(element)
+    })
+  }
+}
