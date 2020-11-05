@@ -9,12 +9,16 @@ clear.addEventListener('click',() => {localStorage.clear()})
 btnNode.addEventListener('click',shortNum);
 btnNode.addEventListener('click', clearTable)
 saveImg()
+  
+
 function useRequest (){
   fetch(` https://picsum.photos/v2/list?page=${+inputPageNode.value}&limit=${+inputlimitNode.value}`)
   .then((response) => { return response.json(); })
   .then((data) => {addResult(data)})
   .catch(() => {console.log("error")});
  }
+
+
  function saveImg() {
    if (localStorage.getItem('data')){
     let object = JSON.parse(localStorage.getItem('data'))
@@ -24,6 +28,7 @@ function useRequest (){
   }}return
 }
 
+
  function addResult (data){
   localStorage.setItem('data',JSON.stringify(data))
   for (let key in data){
@@ -31,6 +36,8 @@ function useRequest (){
    listNode.insertAdjacentHTML("afterbegin",`<li><img src="${data[key].download_url}" alt="${data[key].author}"width="300" height="200" ></li>`)
   }   
 }
+
+
 function shortNum(){
   let myPromise = new Promise((resolve, reject) => {
     if (comCondlimit()&&comCondPage()){
@@ -53,6 +60,8 @@ function comCondPage(){
   errLimitNode.innerHTML=`Номер страницы вне диапазона от 1 до 10`}
   return result
 }
+
+
 function comCondlimit (){
   let result=true;
   if(1>inputlimitNode.value||inputlimitNode.value>10||isNaN(+inputlimitNode.value)) result=false;
@@ -61,6 +70,8 @@ function comCondlimit (){
   errLimitNode.innerHTML=`Лимит вне диапазона от 1 до 10`}
   return result
 }
+
+
 function resultCond(){
     let result=false;
   if(!comCondlimit ()&&!comCondPage()) result=true;
